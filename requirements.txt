@@ -1,0 +1,4 @@
+pygame==2.1.0
+SpeechRecognition==3.8.1
+pyttsx3==2.90
+pymorphy2==0.9.1
