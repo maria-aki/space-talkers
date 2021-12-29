@@ -23,6 +23,7 @@ class Game:
         self.screen.fill((0, 0, 0))
         myfont = pygame.font.Font('assets/arcade.ttf', 30)
         self.finished = False
+        self.gameover = False
 
         def render_text(text, font, colour, x, y, screen, allowed_width):
             words = text.split('\n')
@@ -65,8 +66,8 @@ class Game:
         while not stop:
             for event in pygame.event.get():
                 if event.type == QUIT:
-                    pygame.quit()
-                    quit()
+                    stop = True
+                    self.gameover = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         stop = True
@@ -88,8 +89,7 @@ class Game:
         self.clock.tick(FPS)
         for event in pygame.event.get():
             if event.type == QUIT:
-                pygame.quit()
-                return True
+                self.gameover = True
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LSHIFT:
                     if not self.gui.recording and not self.audio_busy:
@@ -160,4 +160,4 @@ class Game:
         self.screen.blit(self.playarea, (0, 0))
         self.screen.blit(self.messagearea, (PLAYAREA_WIDTH, 0))
         pygame.display.flip()
-        return False
+        return self.gameover

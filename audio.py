@@ -6,7 +6,7 @@ class SpeechRecognizer:
 
     def recognize(self) -> str:
         with sr.Microphone() as source:
-            print("Слушаю")
+            # print("Слушаю")
             audio = self.r.listen(source)
         
         try:

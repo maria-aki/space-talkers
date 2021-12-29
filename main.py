@@ -17,7 +17,7 @@ if __name__ == '__main__':
     def record_and_recognize() -> None:
         line = recognizer.recognize().lower()
         game.gui.recording = False
-        print('Вы сказали:', line)
+        # print('Вы сказали:', line)
         game.chat.add_message({'from': 'mc', 'message': line})
         skill_to_use = None
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
             elif not game.satellite.use_skill(skill_to_use, game):
                 phrase = skillchecker.get_cooldown_message()
 
-        print('Бот ответил:', phrase)
+        # print('Бот ответил:', phrase)
         game.chat.add_message({'from': 'satellite', 'message': phrase.lower()})
         if phrase != '':
             tts.say(phrase)
@@ -53,4 +53,4 @@ if __name__ == '__main__':
 
     while True:
         if game.logic():
-            quit()
+            break
