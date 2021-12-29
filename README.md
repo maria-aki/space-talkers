@@ -12,7 +12,7 @@ pip3 install -r requirements.txt
 
 И запустите
 
-```python
+```bash
 python3 main.py
 ```
 
